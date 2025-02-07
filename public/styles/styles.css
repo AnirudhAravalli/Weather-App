@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Roboto+Mono:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    background-color: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Weather Card */
+/* Existing widget styles */
+.widget {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    background: rgba(40, 40, 40, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Add this */
+}
+
+/* New date positioning */
+.date {
+    font-size: 20px;
+    margin-top: auto; /* Pushes date to bottom */
+    padding-bottom: 20px; /* Add some spacing */
+}
+
+header h2 {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2rem;
+}
+
+/* Weather Heading */
+h1.weather-heading {
+    font-family: 'VT323', monospace;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 2;
+}
+
+
+
+/* Search Bar */
+.weatherLocation {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.input-field:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+
+.input-field {
+    background-color: #1f1f1f;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 20px;
+    width: 65%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.search-button {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #e6e6e6;
+}
+
+/* Weather Icon */
+.weatherIcon {
+    font-size: 6rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.weatherInfo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    margin-top: -30px;
+}
+
+/* Temperature & Weather Info */
+.icon-and-weatherInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+/* .weatherIcon i {
+    margin-top: 10px;
+} */
+
+.temperature {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.weatherCondition {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    margin-top: 15px;
+}
+
+.place {
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* Background Gradient */
+.gradient-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 0;
+}
+
+/* Weather-based Gradient Colors */
+.sunny .gradient-overlay {
+    background: radial-gradient(circle, rgba(255, 220, 100, 0.8), rgba(255, 180, 50, 0.5), transparent);
+    opacity: 1;
+}
+
+.cloudy .gradient-overlay {
+    background: radial-gradient(circle, rgba(200, 200, 200, 0.8), rgba(150, 150, 150, 0.5), transparent);
+    opacity: 1;
+}
+
+.rainy .gradient-overlay {
+    background: radial-gradient(circle, rgba(50, 50, 100, 0.8), rgba(20, 20, 60, 0.5), transparent);
+    opacity: 1;
+}
+
+.snowy .gradient-overlay {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(200, 200, 200, 0.5), transparent);
+    opacity: 1;
+}
+
+/* Fade-in effect for weather info */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Smooth background transition */
+.fade-bg {
+    transition: background 0.5s ease-in-out;
+}
+
+/* Weather icon pop effect */
+.pop {
+    animation: popIn 0.4s ease-in-out;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 1; }
+}
