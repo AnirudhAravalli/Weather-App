@@ -29,7 +29,6 @@ app.get("/weather", async (req, res) => {
     try {    
         const result = await weatherData(req.query.address)
         if (result.cod && result.cod === "404") 
-            // 'cod' might be "404" if the API can't find the address.
             return res.status(404).send("Address not found");
         res.send(result)
     }
